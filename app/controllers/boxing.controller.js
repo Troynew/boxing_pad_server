@@ -50,6 +50,7 @@ exports.find = (req, res) => {
 		where: { email },
 	})
 		.then((data) => {
+			console.log("find-data", data);
 			if (data.length === 1) {
 				res.send({
 					code: 1,
