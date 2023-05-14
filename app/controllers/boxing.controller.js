@@ -47,7 +47,7 @@ exports.update = (req, res) => {
 exports.find = (req, res) => {
 	const email = req.params.email;
 	Boxing.findAll({
-		where: { email },
+		where: { email: email },
 	})
 		.then((data) => {
 			console.log("find-data", data);
@@ -65,7 +65,7 @@ exports.find = (req, res) => {
 		})
 		.catch((err) => {
 			res.status(500).send({
-				message: "find Error",
+				message: "find Error" + err,
 			});
 		});
 };
