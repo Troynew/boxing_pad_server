@@ -5,7 +5,7 @@ module.exports = (app) => {
 
 	// Create a new Tutorial
 	router.post("/record", boxing.update);
-	router.get("/record/:id", boxing.find);
+	router.get("/record/find", boxing.find);
 	router.get("/record", boxing.all);
 
 	app.use("/api/boxing", router);
