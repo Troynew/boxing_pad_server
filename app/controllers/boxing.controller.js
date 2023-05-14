@@ -28,7 +28,8 @@ exports.update = (req, res) => {
 		.then((num) => {
 			if (num == 1) {
 				res.send({
-					message: "Tutorial was updated successfully.",
+					code: 1,
+					message: "Record was updated successfully.",
 				});
 			} else {
 				Boxing.create(req.body).then((data) => {
@@ -38,7 +39,47 @@ exports.update = (req, res) => {
 		})
 		.catch((err) => {
 			res.status(500).send({
-				message: "Error updating Tutorial with id=" + id,
+				message: "Error updating Record with id=" + id,
+			});
+		});
+};
+
+exports.find = (req, res) => {
+	const email = req.params.email;
+	Boxing.findAll({
+		where: { email },
+	})
+		.then((data) => {
+			if (data.length === 1) {
+				res.send({
+					code: 1,
+					data: data[0],
+				});
+			} else {
+				res.send({
+					code: 1,
+					data: {},
+				});
+			}
+		})
+		.catch((err) => {
+			res.status(500).send({
+				message: "find Error",
+			});
+		});
+};
+
+exports.all = (req, res) => {
+	Boxing.findAll()
+		.then((data) => {
+			res.send({
+				code: 1,
+				data: data || [],
+			});
+		})
+		.catch((err) => {
+			res.status(500).send({
+				message: "find Error",
 			});
 		});
 };
