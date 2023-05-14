@@ -51,10 +51,10 @@ exports.find = (req, res) => {
 	})
 		.then((data) => {
 			console.log("find-data", data);
-			if (data.length === 1) {
+			if (data) {
 				res.send({
 					code: 1,
-					data: data[0],
+					data: data,
 				});
 			} else {
 				res.send({
