@@ -50,7 +50,6 @@ exports.find = (req, res) => {
 		where: { email: email },
 	})
 		.then((data) => {
-			console.log("find-data", data);
 			if (data) {
 				res.send({
 					code: 1,
@@ -66,7 +65,6 @@ exports.find = (req, res) => {
 		.catch((err) => {
 			res.status(500).send({
 				message: "find Error" + err,
-				email,
 			});
 		});
 };
