@@ -46,7 +46,7 @@ exports.update = (req, res) => {
 
 exports.find = (req, res) => {
 	const email = req.params.email;
-	Boxing.findAll({
+	Boxing.findOne({
 		where: { email: email },
 	})
 		.then((data) => {
