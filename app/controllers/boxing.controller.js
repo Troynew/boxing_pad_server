@@ -45,7 +45,7 @@ exports.update = (req, res) => {
 };
 
 exports.find = (req, res) => {
-	const email = req.params.email;
+	const email = req.query.email;
 	Boxing.findOne({
 		where: { email: email },
 	})
